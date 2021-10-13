@@ -1,0 +1,25 @@
+.breadcrumb-bg_img{
+    background-image: url('../../images/breadcrumb-bg.png');
+    background-size: cover;
+    padding: 60px 150px;
+    background-position: center;
+    text-align: center;}
+
+
+.breadcrumb-title {
+    color: #333;
+    text-align: left;
+    font-family: Lato,sans-serif;
+    font-size: 40px;
+    font-weight: 700;
+}
+.breadcrumb-links{
+    text-align: left;
+    font-size: 18px;
+}
+
+@media only screen and (min-width: 220px)and (max-width: 499px){
+    .breadcrumb-bg_img{
+        padding: 59px 50px;
+    background-position: right;}
+}

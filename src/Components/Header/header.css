@@ -1,0 +1,9 @@
+button.header-drop-down {
+    border: none;
+    background: none;
+    font-size: 35px;
+    color: crimson;
+}
+button.header-drop-down:hover {
+    color: rgba(220, 20, 60, 0.603);
+}

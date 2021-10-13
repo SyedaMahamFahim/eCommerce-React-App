@@ -1,0 +1,13 @@
+.navbar{
+    background-color: #f9f9f9;
+}
+
+button.navbar-offcanvas {
+    border: none;
+    background: none;
+    font-size: 25px;
+    cursor: pointer;
+}
+.mega-menu{
+    width: 800px;
+}

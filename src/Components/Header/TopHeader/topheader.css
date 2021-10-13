@@ -1,0 +1,9 @@
+.top-header {
+  background-color: #f9f9f9;
+}
+.top-header div:nth-child(1){
+    padding: 5px 0px 0px 0px;
+}
+.top-header div:nth-child(3){
+    text-align: end;
+}
