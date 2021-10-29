@@ -1,59 +1,128 @@
-import React from 'react'
-import './cart.css'
-import Breadcrumbs from '../Breadcrumbs/Breadcrumbs'
+import React from "react";
+import "./cart.css";
+import Breadcrumbs from "../Breadcrumbs/Breadcrumbs";
+import CartItem from "./CartItem/CartItem";
+import { useSelector, useDispatch } from "react-redux";
+import { addItemsToCart, removeItemsFromCart } from "../../actions/cartAction";
+import { Link, useHistory } from "react-router-dom";
+import { PriceSign } from "../MetaData/PriceSign";
+import { MdRemoveShoppingCart } from "react-icons/md";
+
 const Cart = () => {
-    return (
-        <>
-            <Breadcrumbs pageName={'Cart'} />
-            <div className="cart_section">
-        <div className="container-fluid">
-          <div className="row">
-            <div className="col-lg-10 offset-lg-1">
-              <div className="cart_container">
-                <div className="cart_title">Shopping Cart<small> (1 item in your cart) </small></div>
-                <div className="cart_items">
-                  <ul className="cart_list">
-                    <li className="cart_item clearfix">
-                      <div className="cart_item_image"><img src="https://res.cloudinary.com/dxfq3iotg/image/upload/v1560924153/alcatel-smartphones-einsteiger-mittelklasse-neu-3m.jpg" alt="" /></div>
-                      <div className="cart_item_info d-flex flex-md-row flex-column justify-content-between">
-                        <div className="cart_item_name cart_info_col">
-                          <div className="cart_item_title">Name</div>
-                          <div className="cart_item_text">Samsung C7 Pro</div>
-                        </div>
-                        <div className="cart_item_color cart_info_col">
-                          <div className="cart_item_title">Color</div>
-                          <div className="cart_item_text"><span style={{backgroundColor: '#999999'}} />Silver</div>
-                        </div>
-                        <div className="cart_item_quantity cart_info_col">
-                          <div className="cart_item_title">Quantity</div>
-                          <div className="cart_item_text">1</div>
-                        </div>
-                        <div className="cart_item_price cart_info_col">
-                          <div className="cart_item_title">Price</div>
-                          <div className="cart_item_text">₹22000</div>
-                        </div>
-                        <div className="cart_item_total cart_info_col">
-                          <div className="cart_item_title">Total</div>
-                          <div className="cart_item_text">₹22000</div>
-                        </div>
-                      </div>
-                    </li>
-                  </ul>
-                </div>
-                <div className="order_total">
-                  <div className="order_total_content text-md-right">
-                    <div className="order_total_title">Order Total:</div>
-                    <div className="order_total_amount">₹22000</div>
-                  </div>
-                </div>
-                <div className="cart_buttons"> <button type="button" className="button cart_button_clear">Continue Shopping</button> <button type="button" className="button cart_button_checkout">Add to Cart</button> </div>
-              </div>
+  const history = useHistory();
+  const dispatch = useDispatch();
+  const { cartItems } = useSelector((state) => state.cart);
+
+  const increaseQuantity = (id, quantity, stock) => {
+    const newQty = quantity + 1;
+    if (stock <= quantity) {
+      return;
+    }
+    dispatch(addItemsToCart(id, newQty));
+  };
+
+  const decreaseQuantity = (id, quantity) => {
+    const newQty = quantity - 1;
+    if (1 >= quantity) {
+      return;
+    }
+    dispatch(addItemsToCart(id, newQty));
+  };
+
+  const deleteCartItems = (id) => {
+    const confirmationRemoveItem = window.confirm(
+      "Do you want to remove the item?"
+    );
+    if (confirmationRemoveItem) {
+      dispatch(removeItemsFromCart(id));
+    }
+  };
+
+  const checkoutHandler = () => {
+    history.push("/login?redirect=shipping");
+  };
+
+  return (
+    <>
+      <Breadcrumbs pageName={"Cart"} />
+      {cartItems.length === 0 ? (
+        <div className="container mt-5">
+          <div className="row mt-5">
+            <div className="emptyCart text-center">
+              <MdRemoveShoppingCart className="empty-cart-icon"/>
+
+              <h1>No Product in Your Cart</h1>
+              <button className="btn btn-dark header-cart-btn mt-3" type="button">
+                <Link to="/shop" className="header-btn-links">
+                  {" "}
+                  View Shop{" "}
+                </Link>
+              </button>
             </div>
           </div>
         </div>
-      </div>
+      ) : (
+        <>
+          <div className="container mt-5">
+            <table id="cart" className="table table-hover table-condensed">
+              <thead>
+                <tr>
+                  <th style={{ width: "50%" }}>Product</th>
+                  <th style={{ width: "10%" }}>Price</th>
+                  <th style={{ width: "8%" }}>Quantity</th>
+                  <th style={{ width: "22%" }} className="text-center">
+                    Subtotal
+                  </th>
+                  <th style={{ width: "10%" }}>Remove</th>
+                </tr>
+              </thead>
+              <tbody>
+                {cartItems &&
+                  cartItems.map((item, index) => (
+                    <>
+                      <CartItem
+                        key={index}
+                        item={item}
+                        increaseQuantity={increaseQuantity}
+                        decreaseQuantity={decreaseQuantity}
+                        deleteCartItems={deleteCartItems}
+                      />
+                    </>
+                  ))}
+              </tbody>
+              <tfoot>
+                <tr>
+                  <td>
+                    <Link to="/shop" className="btn btn-dark">
+                      Continue Shopping{" "}
+                    </Link>
+                  </td>
+                  <td colSpan={2} className="hidden-xs" />
+                  <td className="hidden-xs text-center">
+                    <strong>
+                      Total{" "}
+                      {`${PriceSign}${cartItems.reduce(
+                        (acc, item) => acc + item.quantity * item.price,
+                        0
+                      )}`}
+                    </strong>
+                  </td>
+                  <td>
+                    <button
+                      onClick={checkoutHandler}
+                      className="btn btn-danger btn-block"
+                    >
+                      Check Out
+                    </button>
+                  </td>
+                </tr>
+              </tfoot>
+            </table>
+          </div>
         </>
-    )
-}
+      )}
+    </>
+  );
+};
 
-export default Cart
+export default Cart;

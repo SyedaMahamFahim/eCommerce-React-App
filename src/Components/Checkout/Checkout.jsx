@@ -1,10 +1,10 @@
 import React from 'react'
 import Breadcrumbs from '../Breadcrumbs/Breadcrumbs'
 import MultiStep from 'react-multistep'
-import BillingInfo from './BillingInfo'
-import FinalCart from './FinalCart'
-import PersonalInformation from './PersonalInformation'
+import BillingInfo from './BillingInfo/BillingInfo'
+import PersonalInformation from './Shipping/PersonalInformation'
 import './checkout.css'
+import ConfirmOrder from './ConfirmOrder/ConfirmOrder'
 const Checkout = () => {
     const prevStyle = {
         background: 'crimson',
@@ -22,8 +22,8 @@ const nextStyle = {
 }
 
 const steps = [
-    { component: <FinalCart /> },
     { component: <PersonalInformation /> },
+    { component: <ConfirmOrder/> },
     { component: <BillingInfo /> },
 ]
 return (

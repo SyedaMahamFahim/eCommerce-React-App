@@ -1,0 +1,26 @@
+.compare-card {
+  box-shadow: 4px 0px 8px 0 rgb(0 0 0 / 20%);
+  max-width: 300px;
+  margin: auto;
+  text-align: center;
+  padding: 10px;
+  font-family: arial;
+  }
+  
+  .price {
+    color: grey;
+    font-size: 22px;
+  }
+  
+  .compare-card button {
+    border: none;
+    outline: 0;
+    padding: 12px;
+    color: white;
+    text-align: center;
+    cursor: pointer;
+    width: 100%;
+    font-size: 18px;
+
+  }
+  

@@ -1,21 +1,23 @@
-import Cart from "./Components/Cart/Cart";
-import Checkout from "./Components/Checkout/Checkout";
+import React, { useEffect } from "react";
+import { loadUser } from "./actions/userAction";
+import store from "./store";
 import Header from "./Components/Header/Header";
-import Login from "./Components/Login/Login";
-import Product from "./Components/Product/Product";
-import Shop from "./Components/Shop/Shop";
-import Signup from "./Components/Signup/Signup";
-
+import Config from "./configurations/Config";
+import { useSelector } from "react-redux";
+import './app.css'
+import Footer from "./Components/Footer/Footer";
 function App() {
+  const { isAuthenticated, user, loading } = useSelector((state) => state.user);
+
+  useEffect(() => {
+    store.dispatch(loadUser());
+  }, []);
+// console.clear()
   return (
     <>
-   <Header/>
-   {/* <Checkout/> */}
-   {/* <Product/> */}
-   {/* <Login/> */}
-   {/* <Signup/> */}
-   {/* <Shop/> */}
-   <Cart/>
+      <Header user={user} loading={loading} isAuthenticated={isAuthenticated} />
+      <Config />
+      <Footer/>
     </>
   );
 }

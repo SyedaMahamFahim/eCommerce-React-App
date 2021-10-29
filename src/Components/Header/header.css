@@ -1,9 +1,76 @@
 button.header-drop-down {
-    border: none;
-    background: none;
-    font-size: 35px;
-    color: crimson;
+  border: none;
+  background: none;
+  font-size: 35px;
+  color: crimson;
 }
 button.header-drop-down:hover {
-    color: rgba(220, 20, 60, 0.603);
+  color: rgba(220, 20, 60, 0.603);
+}
+.offcanvas-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1em 1em 0.5em 1em;
+  border-bottom: 1px solid #eee;
+}
+.header-cart-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #eee;
+}
+
+.header-cart-img {
+  flex-basis: 30%;
+}
+.header-cart-content {
+  flex-basis: 70%;
+  padding: 0px 20px;
+}
+.header-cart-title {
+  font-size: 30px;
+  font-weight: 700;
+  line-height: 28px;
+  margin-bottom: 20px;
+  padding-bottom: 5px;
+  color: #333;
+}
+.header-cart-total-div {
+  border-top: 1px solid #eee;
+  border-bottom: 1px solid #eee;
+  padding: 20px 10px 40px 10px;
+}
+.header-cart-subtotal {
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 25px;
+  color: #333;
+}
+.header-subtotal-title {
+  float: left;
+  overflow: hidden;
+}
+.header-subtotal-amount {
+  float: right;
+  overflow: hidden;
+}
+.header-cart-btn:hover {
+  border-color: #dc3545;
+  background-color: #dc3545;
+  color: white;
+}
+.header-cart-btn a:hover{
+    color: white !important;
+}
+.cartitem-lenght{
+    position: relative;
+    right: 20px;
+    color: white;
+    background: var(--bs-danger);
+    border-radius: 200px;
+    font-size: 14px;
+    padding: 5px 10px 05px 10px;
+    bottom: 20px;
 }

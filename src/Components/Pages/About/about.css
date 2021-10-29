@@ -1,0 +1,53 @@
+.about-top{
+    width: 50%;
+    margin: auto;
+}
+.about-video,.about-content {
+    display: flex;
+    flex-wrap: nowrap;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+}
+video.video-abt {
+    width: 80%;
+    height: auto;
+}
+.about-content {
+    width: 80%;
+    display: flex;
+}
+
+.testimonoal{
+    background-image: url('http://lezada.reactdemo.hasthemes.com/assets/images/backgrounds/testimonials-bg.png');
+    padding: 50px;
+}
+
+@media only screen and (max-width: 724px)  {
+    .about-top{
+        width: 90%;
+    }
+    .testimonoal{
+        padding: 40px 5px;
+    }
+      /* Brands */
+      .all-brands {
+        flex-direction: column;
+        flex-wrap: wrap;
+    }
+}
+
+@media only screen and (min-width: 725px) and (max-width: 1024px) {
+
+    .brand {
+        flex-basis: 50%;
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+        align-content: center;
+        justify-content: space-evenly;
+        align-items: baseline;
+    }
+
+  
+}

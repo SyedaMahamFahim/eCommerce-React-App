@@ -1,0 +1,14 @@
+p{
+    margin-bottom: 0px;
+}
+a{
+    text-decoration: none;
+    color: var(--bs-table-active-color);
+    font-size: 20px;
+}
+a:hover{
+    color:var(--bs-danger);
+}
+li{
+    list-style: none;
+}

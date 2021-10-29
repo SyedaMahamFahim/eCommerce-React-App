@@ -1,0 +1,96 @@
+.contactpage-titles {
+    width: 80%;
+    margin: 80px auto 50px;
+    text-align: center;
+}
+.contactpage-title{
+    font-size: 48px;
+    font-weight: 400;
+    color: #333
+}
+
+.contactpage-info {
+    display: flex;
+    flex-wrap: nowrap;
+    align-content: center;
+    justify-content: center;
+}
+.contact-address-info, .contact-info, .hours-of-operation {
+    flex-basis: 25%;
+    margin: 20px;
+    padding: 10px 0px;
+}
+.contact-icons {
+    margin-right: 20px;
+    font-size: 35px;
+    color: #333;
+}
+h5.contact-content-titles {
+    font-size: 20px;
+}
+.contact-address-info {
+    display: flex;
+}
+.map{
+    margin: 50px;
+    width: auto;
+    height: 200px;
+}
+.contact-form-section{
+    width: 80%;
+    margin: 50px auto 120px;
+}
+.contact-form{
+    width: 55%;
+    margin: 50px auto;
+}
+#fname,#lname,#email,#phone-number,textarea#message{
+    width: -webkit-fill-available;
+}
+.form_design{
+    width: -webkit-fill-available;
+    border: 2px solid #ebeef1;
+    padding: 11px 45px 10px 11px;
+    background: #F6F7F8;
+    margin: 15px;
+}
+
+.submit-btn-block {
+    padding: 13px;
+    border-radius: 0;
+    border: 1px solid #eee;
+    height: auto;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+    outline: none;
+    margin: 15px;
+   
+}
+textarea#message {
+    height: 100px;
+}
+
+@media only screen and (min-width: 220px)and (max-width: 768px){
+    .contact-icons {
+        display: flex;
+        flex-direction: column;
+    }
+    .contactpage-info {
+        flex-wrap: nowrap;
+        flex-direction: column;
+    }
+    .contactpage-titles {
+        margin: 50px auto 50px;
+    }
+    .contact-form-section {
+        width: 80%;
+        margin: 5px auto;
+    }
+    .contact-form {
+        width: 100%;
+        margin: 5px auto ;
+    }
+    .contactpage-title {
+        font-size: 34px;
+    }
+}

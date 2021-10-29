@@ -1,0 +1,9 @@
+.return-policy {
+    width: 80%;
+    margin: 50px auto;
+}
+.return-policy h1{
+    font-size: 45px;
+    margin: 20px;
+    text-align: center;
+}
